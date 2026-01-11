@@ -1,0 +1,22 @@
+%{
+	//Name: Ayush Shrikhande,	PRN: 22070521054 // Practical 08
+	#include <stdio.h>
+	#include "y.tab.h"
+%}
+
+%%
+
+[0-9]+	{ yylval = atoi(yytext); return NUMBER; }
+[-+*/()]+	{ return yytext[0]; }
+[\t]	;/* Skip whitespace */
+\n		{ return '\n'; }
+.		{ printf("%s", yytext); }
+
+%%
+
+int yywrap(void)
+{
+	return 1;
+}
+
+
